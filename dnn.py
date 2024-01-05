@@ -38,13 +38,13 @@ def test_page(newurl):
 
 	headers = {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36","Connection":"close","Accept":"*/*"}
 	
-	response2 = session.get(""+newurl+"js/dnn.js", headers=headers,timeout=10,verify=False)
+	response2 = session.get(""+newurl+"/js/dnn.js", headers=headers,timeout=10,verify=False)
 	if 'Last-Modified' in str(response2.headers):
 		print ("[+] Last-Modified: - "+response2.headers['Last-Modified']+" [+]")
 		if '2020' not in response2.headers['Last-Modified'] and '2019' not in response2.headers['Last-Modified']:
 		
 		
-			response = session.get(""+newurl+"404", headers=headers, cookies=cookies,timeout=10,verify=False)
+			response = session.get(""+newurl+"/404adsadasdasdasd", headers=headers, cookies=cookies,timeout=10,verify=False)
 			if 'content-length' in response.headers:
 				if (response.status_code == 404 and int(response.headers["content-length"]) > 1600 and '404 Error Page' in response.text or 'DNN Corporation' in response.text):
 					if '2002-2018' not in str(response.content):
